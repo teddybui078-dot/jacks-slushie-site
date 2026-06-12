@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jack's Slushies &amp; Snacks</title>
+    <meta name="description" content="Ice-cold slushies and snacks from a little cart with a big personality. Scroll to see what goes into every cup." />
+    <meta property="og:title" content="Jack's Slushies &amp; Snacks" />
+    <meta property="og:description" content="Ice-cold slushies and snacks from a little cart with a big personality." />
+    <meta property="og:image" content="/img/jacks-logo.webp" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        var q = new URLSearchParams(location.search);
+        var reduce =
+          q.get('motion') === 'reduce' ||
+          matchMedia('(prefers-reduced-motion: reduce)').matches;
+        d.classList.add(reduce ? 'reduced-motion' : 'motion-ok');
+      })();
+    </script>
+  </head>
+  <body>
+    <main>
+      <div id="scroll-stage">
+        <div id="stage-viewport">
+          <section class="panel panel--hero" data-panel="hero" aria-label="Welcome">
+            <div class="hero-top">
+              <img
+                class="hero-logo"
+                src="/img/jacks-logo.webp"
+                alt="Jack's Slushies and Snacks logo"
+                width="128"
+                height="128"
+                data-r
+              />
+              <h1 data-r>Sip Something Silly</h1>
+              <p class="tagline" data-r>
+                Ice-cold slushies and snacks from a little cart with a big personality.
+              </p>
+            </div>
+            <div class="hero-bottom">
+              <a class="btn" href="#site-footer" data-r>Find the cart</a>
+              <p class="scroll-hint" data-r>
+                <span>Scroll to see what's inside</span>
+                <svg class="chevron" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M4 7l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </p>
+            </div>
+          </section>
+
+          <div class="video-frame" aria-hidden="true">
+            <video
+              id="scrub-video"
+              muted
+              playsinline
+              preload="auto"
+              poster="/img/jacks-poster.webp"
+            ></video>
+            <canvas id="scrub-canvas" hidden></canvas>
+          </div>
+
+          <section class="panel panel--left" data-panel="story" aria-label="Our story">
+            <div class="sticker-card">
+              <p class="eyebrow" data-r>Our story</p>
+              <h2 data-r>Made by Jack, approved by a dolphin</h2>
+              <p data-r>
+                Jack started spinning slushies from a beach cart with one blender and zero chill.
+                His buddy Finn the dolphin taste-tests every batch. If Finn does a backflip, the
+                flavor makes the menu.
+              </p>
+            </div>
+          </section>
+
+          <section class="panel panel--right" data-panel="mission" aria-label="The mission">
+            <div class="sticker-card sticker-card--alt">
+              <h2 data-r>Maximum brain freeze, minimum frowns</h2>
+              <p data-r>
+                Every cup is layered by hand with real fruit and a ridiculous amount of love.
+                We keep the ice fluffy, the colors loud, and the brain freeze strictly optional.
+              </p>
+            </div>
+          </section>
+
+          <section class="panel panel--left" data-panel="menu" aria-label="The menu">
+            <h2 data-r>The flavor lineup</h2>
+            <ul class="flavor-grid">
+              <li class="flavor-card tilt" data-r>
+                <span class="flavor-dot flavor-dot--pink" aria-hidden="true"></span>
+                <h3>Bubblegum Blizzard</h3>
+                <p>Pink, proud, and impossibly sweet.</p>
+                <p class="price">$4.50</p>
+              </li>
+              <li class="flavor-card tilt" data-r>
+                <span class="flavor-dot flavor-dot--blue" aria-hidden="true"></span>
+                <h3>Blue Wave</h3>
+                <p>Sky-blue raspberry with a salty curl.</p>
+                <p class="price">$4.50</p>
+              </li>
+              <li class="flavor-card tilt" data-r>
+                <span class="flavor-dot flavor-dot--peach" aria-hidden="true"></span>
+                <h3>Peachy Beachy</h3>
+                <p>Golden peach, like sunshine in a cup.</p>
+                <p class="price">$5.00</p>
+              </li>
+              <li class="flavor-card tilt" data-r>
+                <span class="flavor-dot flavor-dot--choco" aria-hidden="true"></span>
+                <h3>Choco Chill</h3>
+                <p>Frozen cocoa for the brave and bold.</p>
+                <p class="price">$5.50</p>
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel panel--right" data-panel="location" aria-label="Location and hours">
+            <div class="sticker-card">
+              <h2 data-r>Find us at the boardwalk</h2>
+              <p data-r>Pier 7, Sunny Sands Boardwalk</p>
+              <dl class="hours" data-r>
+                <div><dt>Mon to Fri</dt><dd>11am to 7pm</dd></div>
+                <div><dt>Sat and Sun</dt><dd>10am to 8pm</dd></div>
+              </dl>
+              <div class="map-sticker" data-r>
+                <p>Map coming soon. Follow the smell of bubblegum!</p>
+              </div>
+              <ul class="socials" data-r>
+                <li><a href="https://instagram.com" rel="noopener">Instagram</a></li>
+                <li><a href="https://tiktok.com" rel="noopener">TikTok</a></li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <footer id="site-footer">
+        <h2 data-r>Come grab one!</h2>
+        <p class="footer-sub" data-r>First-timers get a free flavor high-five.</p>
+        <a class="btn btn--brown" href="mailto:hello@jacksslushies.com" data-r>Say hi</a>
+        <img
+          class="footer-logo"
+          src="/img/jacks-logo.webp"
+          alt=""
+          width="72"
+          height="72"
+          data-r
+        />
+        <p class="copyright" data-r>&copy; 2026 Jack's Slushies &amp; Snacks</p>
+      </footer>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

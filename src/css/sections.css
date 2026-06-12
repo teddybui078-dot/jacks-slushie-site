@@ -1,0 +1,64 @@
+/* ---- hero ---- */
+
+.hero-logo {
+  width: clamp(96px, 12vh, 128px);
+  height: auto;
+  border-radius: 50%;
+  box-shadow: var(--shadow-sticker);
+  rotate: -3deg;
+  margin-inline: auto;
+}
+
+.panel--hero h1 {
+  margin-top: 1.2rem;
+  max-width: 14ch;
+  margin-inline: auto;
+}
+
+.tagline {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-weight: 600;
+  max-width: 38ch;
+  margin: 0.8rem auto 0;
+}
+
+.hero-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ---- footer ---- */
+
+#site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  text-align: center;
+  padding: 7rem 1.5rem 3rem;
+  background: var(--cream);
+  border-top: var(--border-sticker);
+}
+
+#site-footer h2 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+}
+
+.footer-sub {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.footer-logo {
+  border-radius: 50%;
+  box-shadow: var(--shadow-sticker);
+  rotate: 2deg;
+  margin-top: 1.5rem;
+}
+
+.copyright {
+  font-size: 0.82rem;
+  color: rgba(92, 58, 40, 0.75);
+}

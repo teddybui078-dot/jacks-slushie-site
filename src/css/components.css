@@ -1,0 +1,229 @@
+/* ---- buttons ---- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--brown);
+  background: var(--pink);
+  border: var(--border-sticker);
+  border-radius: var(--radius-pill);
+  padding: 0.7em 1.6em;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 5px 0 rgba(92, 58, 40, 0.25);
+  transition:
+    transform var(--dur-hover) var(--ease-out-quint),
+    box-shadow var(--dur-hover) var(--ease-out-quint);
+}
+
+.btn:hover {
+  transform: translateY(-2px) rotate(-1deg);
+  box-shadow: 0 7px 0 rgba(92, 58, 40, 0.25);
+}
+
+.btn:active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: 0 2px 0 rgba(92, 58, 40, 0.25);
+  transition-duration: var(--dur-press);
+}
+
+.btn--brown {
+  background: var(--brown);
+  color: #fff8ec;
+  box-shadow: 0 5px 0 rgba(92, 58, 40, 0.35);
+}
+
+/* ---- sticker cards ---- */
+
+.sticker-card {
+  background: var(--card-bg);
+  border: var(--border-sticker);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sticker);
+  padding: 1.5rem;
+  rotate: -1.5deg;
+}
+
+.sticker-card--alt {
+  rotate: 1deg;
+}
+
+.sticker-card h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* ---- eyebrow ---- */
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(92, 58, 40, 0.75);
+  margin-bottom: 0.6rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--pink);
+  border: 2px solid var(--brown);
+}
+
+/* ---- flavor cards ---- */
+
+.flavor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.flavor-card {
+  background: var(--card-bg);
+  border: var(--border-sticker);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sticker);
+  padding: 1rem;
+  font-size: 0.85rem;
+  rotate: -1.5deg;
+  transition: transform var(--dur-hover) var(--ease-out-quint);
+  transform-style: preserve-3d;
+  perspective: 600px;
+}
+
+.flavor-card:nth-child(even) {
+  rotate: 1deg;
+}
+
+.flavor-card:hover {
+  transform: translateY(-4px);
+}
+
+.flavor-card h3 {
+  margin: 0.4rem 0 0.15rem;
+}
+
+.flavor-card .price {
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: rgba(92, 58, 40, 0.8);
+  margin-top: 0.3rem;
+}
+
+.flavor-dot {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--brown);
+}
+
+.flavor-dot--pink {
+  background: var(--pink);
+}
+
+.flavor-dot--blue {
+  background: var(--blue);
+}
+
+.flavor-dot--peach {
+  background: var(--cream);
+}
+
+.flavor-dot--choco {
+  background: var(--brown);
+}
+
+/* ---- scroll hint ---- */
+
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(92, 58, 40, 0.85);
+}
+
+html.motion-ok .scroll-hint .chevron {
+  animation: hint-bob 1.2s var(--ease-in-out-quint) infinite;
+}
+
+@keyframes hint-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* ---- hours / map / socials ---- */
+
+.hours {
+  margin: 0.8rem 0;
+  font-size: 0.92rem;
+}
+
+.hours div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.15rem 0;
+}
+
+.hours dt {
+  font-weight: 700;
+}
+
+.map-sticker {
+  border: 3px dashed var(--brown);
+  border-radius: var(--radius);
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.88rem;
+  background: rgba(255, 255, 255, 0.35);
+  margin-bottom: 0.8rem;
+}
+
+.socials {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.socials a {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid var(--brown);
+  border-radius: var(--radius-pill);
+  padding: 0.3em 1em;
+  background: var(--blue);
+  transition: transform var(--dur-hover) var(--ease-out-quint);
+}
+
+.socials a:hover {
+  transform: translateY(-2px) rotate(1.5deg);
+}
+
+.socials a:active {
+  transform: scale(0.97);
+  transition-duration: var(--dur-press);
+}

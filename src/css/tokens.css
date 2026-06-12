@@ -1,0 +1,30 @@
+:root {
+  /* brand palette */
+  --pink: #f08bc8;
+  --blue: #7dd4e0;
+  --cream: #f8d9a0;
+  --brown: #5c3a28;
+
+  /* sampled from the encoded video's background; the stage must use this
+     exact value or the square video shows visible edges */
+  --stage-bg: #fcd89b;
+
+  --card-bg: #fdf2e0;
+
+  /* one radius system, locked */
+  --radius: 24px;
+  --radius-pill: 999px;
+
+  --border-sticker: 3px solid var(--brown);
+  --shadow-sticker: 0 6px 0 rgba(92, 58, 40, 0.18);
+
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-quint: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --dur-press: 120ms;
+  --dur-hover: 240ms;
+  --dur-enter: 600ms;
+
+  --font-head: 'Baloo 2', system-ui, sans-serif;
+  --font-body: 'Quicksand', system-ui, sans-serif;
+}
