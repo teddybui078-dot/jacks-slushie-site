@@ -1,0 +1,77 @@
+/* The scroll stage: a 500vh container whose first 100dvh child is
+   pinned by ScrollTrigger while scroll progress scrubs the video. */
+
+#scroll-stage {
+  height: 500vh;
+  background: var(--stage-bg);
+}
+
+#stage-viewport {
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-frame {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#scrub-video,
+#scrub-canvas {
+  width: min(100vmin, 1080px);
+  aspect-ratio: 1 / 1;
+  height: auto;
+}
+
+/* ---- panels ---- */
+
+.panel {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  /* hidden until GSAP takes over (autoAlpha) */
+  visibility: hidden;
+  opacity: 0;
+}
+
+.panel a,
+.panel button,
+.panel .flavor-card {
+  pointer-events: auto;
+}
+
+.panel--left,
+.panel--right {
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(280px, 30vw, 420px);
+}
+
+.panel--left {
+  left: clamp(1rem, 6vw, 5rem);
+}
+
+.panel--right {
+  right: clamp(1rem, 6vw, 5rem);
+}
+
+/* hero frames the cup: brand block up top, CTA pinned low */
+.panel--hero {
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 6vh 1.5rem 4vh;
+}
+
+.panel--menu-title {
+  margin-bottom: 0.4rem;
+}
