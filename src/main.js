@@ -3,11 +3,15 @@ import './css/base.css';
 import './css/components.css';
 import './css/sections.css';
 import './css/stage.css';
+import './css/loader.css';
 
 import { prefersReducedMotion } from './js/reducedMotion.js';
 
 async function boot() {
   if (prefersReducedMotion()) return;
+
+  const { initLoader } = await import('./js/loader.js');
+  const loader = initLoader();
 
   const { createVideoScrubber, createCanvasScrubber } = await import('./js/scrubVideo.js');
 
@@ -19,9 +23,9 @@ async function boot() {
   if (useCanvas) {
     canvas.hidden = false;
     video.hidden = true;
-    scrubber = createCanvasScrubber(canvas);
+    scrubber = createCanvasScrubber(canvas, { onProgress: loader.setProgress });
   } else {
-    scrubber = createVideoScrubber(video);
+    scrubber = createVideoScrubber(video, { onProgress: loader.setProgress });
   }
 
   try {
@@ -31,6 +35,7 @@ async function boot() {
     console.error(err);
     scrubber.destroy();
     document.documentElement.classList.replace('motion-ok', 'reduced-motion');
+    loader.dismiss();
     return;
   }
 
@@ -38,6 +43,7 @@ async function boot() {
 
   const { initScenes } = await import('./js/scrollScenes.js');
   initScenes(scrubber);
+  loader.dismiss();
 }
 
 boot();
