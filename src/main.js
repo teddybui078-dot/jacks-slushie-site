@@ -8,7 +8,11 @@ import './css/loader.css';
 import { prefersReducedMotion } from './js/reducedMotion.js';
 
 async function boot() {
-  if (prefersReducedMotion()) return;
+  if (prefersReducedMotion()) {
+    const { initMicro } = await import('./js/microinteractions.js');
+    initMicro({ motionOK: false });
+    return;
+  }
 
   const { initLoader } = await import('./js/loader.js');
   const loader = initLoader();
@@ -44,6 +48,9 @@ async function boot() {
   const { initScenes } = await import('./js/scrollScenes.js');
   initScenes(scrubber);
   loader.dismiss();
+
+  const { initMicro } = await import('./js/microinteractions.js');
+  initMicro({ motionOK: true });
 }
 
 boot();
