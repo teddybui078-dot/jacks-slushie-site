@@ -75,3 +75,112 @@
 .panel--menu-title {
   margin-bottom: 0.4rem;
 }
+
+/* static frames only exist for the reduced-motion / no-JS experience */
+.static-poster,
+.static-endframe {
+  display: none;
+}
+
+/* ---- mobile: square video fills the width, panels take the top and
+   bottom bands instead of left/right gutters ---- */
+
+@media (max-width: 768px) {
+  .panel--left,
+  .panel--right {
+    left: 50%;
+    right: auto;
+    top: auto;
+    transform: translateX(-50%);
+    width: min(92vw, 420px);
+  }
+
+  .panel--m-top {
+    top: 3vh;
+  }
+
+  .panel--m-bottom {
+    bottom: 3vh;
+  }
+
+  .sticker-card {
+    padding: 1.1rem;
+    font-size: 0.92rem;
+  }
+
+  /* flavor cards become a horizontal snap row */
+  .flavor-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.6rem;
+  }
+
+  .flavor-card {
+    flex: 0 0 46%;
+    scroll-snap-align: start;
+  }
+
+  .map-sticker {
+    aspect-ratio: auto;
+    padding: 0.7rem;
+  }
+}
+
+/* ---- reduced motion (or no JS): everything becomes a calm, normally
+   scrolling page with static frames instead of the scrub video ---- */
+
+:where(html.reduced-motion, html:not(.js)) #scroll-stage {
+  height: auto;
+}
+
+:where(html.reduced-motion, html:not(.js)) #stage-viewport {
+  height: auto;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5rem;
+  padding: 3rem 1.2rem;
+}
+
+:where(html.reduced-motion, html:not(.js)) .video-frame {
+  position: static;
+  pointer-events: auto;
+}
+
+:where(html.reduced-motion, html:not(.js)) #scrub-video,
+:where(html.reduced-motion, html:not(.js)) #scrub-canvas {
+  display: none;
+}
+
+:where(html.reduced-motion, html:not(.js)) .static-poster,
+:where(html.reduced-motion, html:not(.js)) .static-endframe {
+  display: block;
+  width: min(88vw, 560px);
+  border-radius: var(--radius);
+}
+
+:where(html.reduced-motion, html:not(.js)) .panel {
+  position: static;
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  width: min(92vw, 560px);
+}
+
+:where(html.reduced-motion, html:not(.js)) .panel--hero {
+  padding: 0;
+  gap: 2rem;
+}
+
+:where(html.reduced-motion, html:not(.js)) .panel [data-r] {
+  /* GSAP never runs here; make sure nothing stays hidden */
+  visibility: visible;
+  opacity: 1;
+}
+
+:where(html.reduced-motion, html:not(.js)) #loader {
+  display: none;
+}
