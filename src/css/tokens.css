@@ -5,9 +5,11 @@
   --cream: #f8d9a0;
   --brown: #5c3a28;
 
-  /* sampled from the encoded video's background; the stage must use this
-     exact value or the square video shows visible edges */
-  --stage-bg: #fcd89b;
+  /* the video background as Chrome actually composites it on screen
+     (sampled from rendered pixels, NOT from the raw decode; the browser's
+     color pipeline shifts it). The stage must match or the square video
+     shows visible edges; a vignette on .video-frame feathers the rest. */
+  --stage-bg: #ffe0a2;
 
   --card-bg: #fdf2e0;
 

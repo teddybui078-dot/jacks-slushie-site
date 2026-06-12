@@ -13,13 +13,29 @@
   margin-top: 1.2rem;
   max-width: 14ch;
   margin-inline: auto;
+  /* sticker-style outline so the headline stays legible over the cup */
+  paint-order: stroke fill;
+  -webkit-text-stroke: 12px var(--card-bg);
+  text-shadow:
+    0 2px 0 var(--card-bg),
+    0 -2px 0 var(--card-bg),
+    2px 0 0 var(--card-bg),
+    -2px 0 0 var(--card-bg),
+    0 6px 14px rgba(92, 58, 40, 0.18);
 }
 
 .tagline {
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  display: inline-block;
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   font-weight: 600;
-  max-width: 38ch;
-  margin: 0.8rem auto 0;
+  max-width: 44ch;
+  margin: 0.9rem auto 0;
+  background: var(--card-bg);
+  border: 2px solid var(--brown);
+  border-radius: var(--radius-pill);
+  padding: 0.45em 1.2em;
+  box-shadow: var(--shadow-sticker);
+  rotate: -1deg;
 }
 
 .hero-bottom {
