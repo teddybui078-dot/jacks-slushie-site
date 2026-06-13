@@ -129,20 +129,16 @@
   border: 2px solid var(--brown);
 }
 
-.flavor-dot--pink {
-  background: var(--pink);
+.flavor-dot--strawberry {
+  background: #ef5777;
 }
 
-.flavor-dot--blue {
-  background: var(--blue);
+.flavor-dot--grape {
+  background: #9b5de5;
 }
 
-.flavor-dot--peach {
-  background: var(--cream);
-}
-
-.flavor-dot--choco {
-  background: var(--brown);
+.flavor-dot--watermelon {
+  background: #59c36a;
 }
 
 /* ---- scroll hint ---- */

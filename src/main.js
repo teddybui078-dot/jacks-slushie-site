@@ -46,7 +46,13 @@ async function boot() {
   scrubber.start();
 
   const { initScenes } = await import('./js/scrollScenes.js');
+  const { ScrollTrigger } = await import('gsap/ScrollTrigger');
   initScenes(scrubber);
+  // the two beat pins measure spacers against the freshly built layout;
+  // recompute now that video metadata + sections are settled, and again
+  // once webfonts land in case heading reflow shifts section heights
+  ScrollTrigger.refresh();
+  document.fonts?.ready.then(() => ScrollTrigger.refresh());
   loader.dismiss();
 
   const { initMicro } = await import('./js/microinteractions.js');

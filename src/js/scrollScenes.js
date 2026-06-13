@@ -4,74 +4,18 @@ import { CustomEase } from 'gsap/CustomEase';
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
-/* Progress windows for each panel. Gaps between windows give the
-   exploding cup solo moments on screen. Only the video scrubs with
-   scroll; panels enter/exit with real time-based easings. */
-const WINDOWS = [
-  { id: 'hero', start: 0, end: 0.1 },
-  { id: 'story', start: 0.18, end: 0.38 },
-  { id: 'mission', start: 0.44, end: 0.62 },
-  { id: 'menu', start: 0.68, end: 0.86 },
-  { id: 'location', start: 0.92, end: 1.01 }, // 1.01 so it never exits at the bottom
-];
+/* The single continuous video (cup pours -> explodes -> settles) plays as a
+   persistent backdrop the whole way down: one scrub mapped to overall page
+   scroll, so the cup is always animating behind the floating content. The
+   cup is roughly mid-explosion by the menu and settled by the time you reach
+   the footer. */
 
-export function initScenes(scrubber) {
-  CustomEase.create('quintOut', '0.23, 1, 0.32, 1');
-
-  const panels = WINDOWS.map((w) => {
-    const el = document.querySelector(`[data-panel="${w.id}"]`);
-    const items = el.querySelectorAll('[data-r]');
-    const tl = gsap
-      .timeline({ paused: true })
-      .fromTo(el, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.01 })
-      .fromTo(
-        items,
-        { autoAlpha: 0, y: 40, filter: 'blur(8px)' },
-        {
-          autoAlpha: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          duration: 0.6,
-          ease: 'quintOut',
-          stagger: 0.08,
-        },
-        0.01
-      );
-    return { ...w, el, tl, active: false };
-  });
-
-  function syncPanels(progress) {
-    for (const p of panels) {
-      const inWindow = progress >= p.start && progress <= p.end;
-      if (inWindow && !p.active) {
-        p.active = true;
-        p.tl.timeScale(1).play();
-      } else if (!inWindow && p.active) {
-        p.active = false;
-        p.tl.timeScale(2).reverse(); // exits run twice as fast
-      }
-    }
-  }
-
-  const st = ScrollTrigger.create({
-    trigger: '#scroll-stage',
-    start: 'top top',
-    end: 'bottom bottom',
-    pin: '#stage-viewport',
-    pinSpacing: false,
-    invalidateOnRefresh: true,
-    onUpdate(self) {
-      scrubber.setProgress(self.progress);
-      syncPanels(self.progress);
-    },
-  });
-
-  // apply current state immediately (handles mid-page reloads)
-  scrubber.setProgress(st.progress);
-  syncPanels(st.progress);
-
+/* the reveal recipe shared by every panel + the footer */
+function revealIn(scope) {
+  const items = document.querySelectorAll(`${scope} [data-r]`);
+  if (!items.length) return;
   gsap.fromTo(
-    '#site-footer [data-r]',
+    items,
     { autoAlpha: 0, y: 40, filter: 'blur(8px)' },
     {
       autoAlpha: 1,
@@ -80,9 +24,33 @@ export function initScenes(scrubber) {
       duration: 0.6,
       ease: 'quintOut',
       stagger: 0.08,
-      scrollTrigger: { trigger: '#site-footer', start: 'top 80%', once: true },
+      scrollTrigger: { trigger: scope, start: 'top 80%', once: true },
     }
   );
+}
+
+export function initScenes(scrubber) {
+  CustomEase.create('quintOut', '0.23, 1, 0.32, 1');
+  // the mobile URL bar collapsing/expanding changes vh; don't refresh (and
+  // jump the scrub) every time it does
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  // one continuous scrub across the whole stack of content panels
+  const st = ScrollTrigger.create({
+    trigger: '.scroll-content',
+    start: 'top top',
+    end: 'bottom bottom',
+    invalidateOnRefresh: true,
+    onUpdate: (self) => scrubber.setProgress(self.progress),
+  });
+
+  // staggered reveals as each panel scrolls into view
+  ['[data-panel="hero"]', '[data-panel="problem"]', '[data-panel="mission"]', '[data-panel="menu"]', '[data-panel="find"]', '#site-footer'].forEach(
+    revealIn
+  );
+
+  // mid-page reload: paint the frame for wherever we landed
+  scrubber.setProgress(st.progress);
 
   return st;
 }

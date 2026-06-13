@@ -8,10 +8,19 @@
   /* the video background as Chrome actually composites it on screen
      (sampled from rendered pixels, NOT from the raw decode; the browser's
      color pipeline shifts it). The stage must match or the square video
-     shows visible edges; a vignette on .video-frame feathers the rest. */
+     shows visible edges; a vignette on .scrub-layer feathers the rest. */
   --stage-bg: #ffe0a2;
 
   --card-bg: #fdf2e0;
+
+  /* per-section background tints for the normal-flow content sections.
+     Kept very light so --brown text and the sticker cards stay legible.
+     The pinned video BEATS never use these — they stay on --stage-bg so the
+     square video's feathered edge always sits on a matching background. */
+  --bg-story: #fdeecf; /* warm cream */
+  --bg-mission: #e9f6f3; /* pale mint */
+  --bg-menu: #fbe6f1; /* pale pink */
+  --bg-find: #eaf4f8; /* pale sky */
 
   /* one radius system, locked */
   --radius: 24px;
