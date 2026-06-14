@@ -147,10 +147,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.2rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: rgba(92, 58, 40, 0.85);
+  gap: 0.55rem;
+  margin-top: 0.4rem;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  color: var(--brown);
+}
+
+/* the arrow sits in a bouncing blue badge so the cue actually pops */
+.scroll-hint .chevron {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  color: var(--brown);
+  background: var(--blue);
+  border: var(--border-sticker);
+  border-radius: 50%;
+  box-shadow: var(--shadow-sticker);
 }
 
 html.motion-ok .scroll-hint .chevron {
