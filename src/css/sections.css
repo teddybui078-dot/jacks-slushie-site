@@ -98,7 +98,7 @@
 
 .menu-note {
   margin-top: 0.8rem;
-  font-size: 0.85rem;
+  font-size: 0.78rem; /* matches the eyebrow ("What's inside") */
   font-weight: 600;
   color: rgba(92, 58, 40, 0.8);
 }
@@ -163,7 +163,8 @@
     font-size: clamp(2.3rem, 3.6vw, 3.6rem);
   }
 
-  .panel .eyebrow {
+  .panel .eyebrow,
+  .panel .menu-note {
     font-size: 1rem;
   }
 
