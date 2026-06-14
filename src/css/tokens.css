@@ -5,10 +5,10 @@
   --cream: #f8d9a0;
   --brown: #5c3a28;
 
-  /* warm golden page background; also the backdrop the scrub video blends
-     against (darken), which dulls the cup — compensated by a strong
-     saturation boost on the video in stage.css. */
-  --stage-bg: #ffe0a2;
+  /* light blue page background; also the backdrop the scrub video blends
+     against (darken) — a blue backdrop keeps the cup's blues true and the
+     warm cards pop against it. */
+  --stage-bg: #cce8f7;
 
   --card-bg: #fdf2e0;
 
