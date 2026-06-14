@@ -141,6 +141,10 @@
   background: #59c36a;
 }
 
+.flavor-dot--blueberry {
+  background: #4b5fc9;
+}
+
 /* ---- scroll hint ---- */
 
 .scroll-hint {

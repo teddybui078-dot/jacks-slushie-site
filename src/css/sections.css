@@ -61,9 +61,9 @@
   margin-bottom: 0.2rem;
 }
 
-/* three flavors sit in a row of three (collapses to a snap row on mobile) */
+/* four flavors in a 2x2 grid (collapses to a snap row on mobile) */
 .menu-card .flavor-grid {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 /* one price chart for every flavor: S / M / L */
