@@ -21,7 +21,7 @@
    page colour, so the cup reads as if it has no background at all. */
 .scrub-screen {
   position: relative;
-  width: min(92vw, calc(88vh * 622 / 833), 520px);
+  width: min(96vw, calc(92vh * 622 / 833), 760px);
   aspect-ratio: 622 / 833;
 }
 
@@ -30,7 +30,11 @@
   width: 100%;
   height: 100%;
   display: block;
-  mix-blend-mode: multiply;
+  /* darken (not multiply) drops the white into the cream page without
+     tinting the cup warm, so the colours stay vivid; a touch of extra
+     saturation keeps it as punchy as the old build */
+  mix-blend-mode: darken;
+  filter: saturate(1.2);
 }
 
 /* soft ground shadow under the cup base, like the old build had */
@@ -98,7 +102,8 @@
   width: min(70vmin, 380px);
   height: auto;
   margin-inline: auto;
-  mix-blend-mode: multiply; /* same white-into-cream blend as the video */
+  mix-blend-mode: darken; /* same white-into-cream blend as the video */
+  filter: saturate(1.2);
 }
 
 html.motion-ok .static-frame {
