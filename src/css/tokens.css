@@ -5,10 +5,10 @@
   --cream: #f8d9a0;
   --brown: #5c3a28;
 
-  /* light blue page background; also the backdrop the scrub video blends
-     against (darken) — a blue backdrop keeps the cup's blues true and the
-     warm cards pop against it. */
-  --stage-bg: #cce8f7;
+  /* soft warm off-white page background; also the backdrop the scrub video
+     blends against (darken). Kept light so it doesn't cap/dull the cup, which
+     lets the drink stand out at saturation 1.2. */
+  --stage-bg: #fff6e6;
 
   --card-bg: #fdf2e0;
 
