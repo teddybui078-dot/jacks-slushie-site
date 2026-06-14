@@ -20,21 +20,27 @@ npm run preview   # serve the build
 
 ## Asset pipeline
 
-Originals live in the repo root; web derivatives in `public/`. The scrub videos are re-encoded **all-intra** (every frame a keyframe) because the source mp4 has a single keyframe and cannot be seeked smoothly. To regenerate:
+Originals live in the repo root; web derivatives in `public/`. The scrub videos are re-encoded **all-intra** (every frame a keyframe) so they seek smoothly, and keep the source's **portrait** aspect (≈3:4 — `scale=-2` preserves it). Current source: `jacks-videov2.mp4`. To regenerate:
 
 ```bash
-# scrub videos
-ffmpeg -i jacks-video.mp4 -vf "scale=1080:1080:flags=lanczos" -c:v libx264 -profile:v high \
-  -pix_fmt yuv420p -x264-params "keyint=1:min-keyint=1:scenecut=0" -crf 23 -preset slow \
+# scrub videos (all-intra, portrait preserved)
+ffmpeg -y -i jacks-videov2.mp4 -vf "scale=-2:1080:flags=lanczos" -c:v libx264 -profile:v high \
+  -pix_fmt yuv420p -x264-params "keyint=1:min-keyint=1:scenecut=0" -crf 23 -preset medium \
   -an -movflags +faststart public/video/jacks-scrub-1080.mp4
-ffmpeg -i jacks-video.mp4 -vf "scale=720:720:flags=lanczos" -c:v libx264 -profile:v high \
-  -pix_fmt yuv420p -x264-params "keyint=1:min-keyint=1:scenecut=0" -crf 24 -preset slow \
+ffmpeg -y -i jacks-videov2.mp4 -vf "scale=-2:720:flags=lanczos" -c:v libx264 -profile:v high \
+  -pix_fmt yuv420p -x264-params "keyint=1:min-keyint=1:scenecut=0" -crf 24 -preset medium \
   -an -movflags +faststart public/video/jacks-scrub-720.mp4
 
-# images
-ffmpeg -i jacks-startframe.png -vf "scale=1080:1080:flags=lanczos" -c:v libwebp -quality 82 public/img/jacks-poster.webp
-ffmpeg -i jacks-endframe.png  -vf "scale=1080:1080:flags=lanczos" -c:v libwebp -quality 82 public/img/jacks-endframe.webp
-ffmpeg -i jacks-startframe.png -vf "scale=360:360:flags=lanczos" -c:v libwebp -quality 80 public/img/jacks-loader.webp
+# stills — poster (first frame), endframe (last), loader (small). This ffmpeg
+# build has no libwebp, so go through PNG then cwebp.
+ffmpeg -y -ss 0   -i jacks-videov2.mp4 -frames:v 1 -vf "scale=-2:1080:flags=lanczos" /tmp/poster.png
+ffmpeg -y -ss 9.9 -i jacks-videov2.mp4 -frames:v 1 -vf "scale=-2:1080:flags=lanczos" /tmp/endframe.png
+ffmpeg -y -ss 0   -i jacks-videov2.mp4 -frames:v 1 -vf "scale=-2:300:flags=lanczos"  /tmp/loader.png
+cwebp -q 82 /tmp/poster.png   -o public/img/jacks-poster.webp
+cwebp -q 82 /tmp/endframe.png -o public/img/jacks-endframe.webp
+cwebp -q 80 /tmp/loader.png   -o public/img/jacks-loader.webp
+
+# logo / dolphin / favicon come from the logo image (unchanged; need libwebp or cwebp)
 ffmpeg -i jacks-slushies-logo.jpg -vf "scale=512:512" -c:v libwebp -quality 85 public/img/jacks-logo.webp
 ffmpeg -i jacks-slushies-logo.jpg -vf "crop=iw*0.60:ih*0.60:(iw-ow)/2:(ih-oh)/2,scale=240:240" -c:v libwebp -quality 85 public/img/jacks-dolphin.webp
 ffmpeg -i jacks-slushies-logo.jpg -vf "crop=iw*0.60:ih*0.60:(iw-ow)/2:(ih-oh)/2,scale=64:64" public/favicon.png

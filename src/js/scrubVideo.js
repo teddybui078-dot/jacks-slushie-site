@@ -127,12 +127,10 @@ export function createCanvasScrubber(canvas, { onProgress = () => {} } = {}) {
   let rafId = null;
 
   function size() {
-    const px = Math.min(
-      Math.min(window.innerWidth, window.innerHeight) * window.devicePixelRatio,
-      1080
-    );
-    canvas.width = px;
-    canvas.height = px;
+    // match the portrait video's aspect (622:833) so drawImage never distorts
+    const h = Math.min(window.innerHeight * 0.88 * window.devicePixelRatio, 1080);
+    canvas.height = Math.round(h);
+    canvas.width = Math.round((h * 622) / 833);
   }
 
   function draw() {

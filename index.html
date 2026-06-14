@@ -29,7 +29,7 @@
   </head>
   <body>
     <div id="loader" aria-hidden="true">
-      <img src="/img/jacks-loader.webp" alt="" width="120" height="120" />
+      <img src="/img/jacks-loader.webp" alt="" width="112" height="150" />
       <p class="loader-text">Pouring your slushie&hellip; <span data-loader-pct>0%</span></p>
     </div>
     <main>
@@ -37,14 +37,16 @@
            scrubs continuously with page scroll. Fixed, so it sits behind the
            content as a persistent backdrop that's always animating. -->
       <div class="scrub-layer" aria-hidden="true">
-        <video
-          id="scrub-video"
-          muted
-          playsinline
-          preload="auto"
-          poster="/img/jacks-poster.webp"
-        ></video>
-        <canvas id="scrub-canvas" hidden></canvas>
+        <div class="scrub-screen">
+          <video
+            id="scrub-video"
+            muted
+            playsinline
+            preload="auto"
+            poster="/img/jacks-poster.webp"
+          ></video>
+          <canvas id="scrub-canvas" hidden></canvas>
+        </div>
       </div>
 
       <!-- content floats OVER the cup. Each panel is its own screen, so the
@@ -82,7 +84,7 @@
           class="static-frame static-poster"
           src="/img/jacks-poster.webp"
           alt="A pink and blue slushie cup with a happy face"
-          width="1080"
+          width="806"
           height="1080"
         />
 
@@ -113,7 +115,7 @@
           class="static-frame static-endframe"
           src="/img/jacks-endframe.webp"
           alt="The slushie cup exploded into lid, ice, syrup splashes, and fruit"
-          width="1080"
+          width="806"
           height="1080"
         />
 

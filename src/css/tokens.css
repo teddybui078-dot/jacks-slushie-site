@@ -5,10 +5,8 @@
   --cream: #f8d9a0;
   --brown: #5c3a28;
 
-  /* the video background as Chrome actually composites it on screen
-     (sampled from rendered pixels, NOT from the raw decode; the browser's
-     color pipeline shifts it). The stage must match or the square video
-     shows visible edges; a vignette on .scrub-layer feathers the rest. */
+  /* warm cream page background. The portrait scrub video now sits in its own
+     white "screen" frame, so this no longer has to match the video. */
   --stage-bg: #ffe0a2;
 
   --card-bg: #fdf2e0;
