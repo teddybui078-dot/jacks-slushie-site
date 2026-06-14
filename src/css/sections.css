@@ -110,10 +110,10 @@
    same — Sandwiches, Sweets and Bowls all read as equal categories ---- */
 
 .snacks-card {
-  background: var(--bg-find);
+  background: #cfe8f7; /* a clearer blue so it pops against the warm page */
   border: var(--border-sticker);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-sticker);
+  box-shadow: 0 8px 0 rgba(92, 58, 40, 0.22); /* a touch more lift */
   padding: clamp(1.4rem, 2.4vw, 2.4rem);
   rotate: 1deg;
 }
