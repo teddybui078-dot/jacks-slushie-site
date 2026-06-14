@@ -31,10 +31,9 @@
   height: 100%;
   display: block;
   /* darken (not multiply) drops the white into the cream page without
-     tinting the cup warm; saturation eased back a touch so it's neither
-     over-vivid nor dim */
+     tinting the cup warm; saturation boosted so the cup stays bright */
   mix-blend-mode: darken;
-  filter: saturate(0.8);
+  filter: saturate(1.2);
 }
 
 /* soft ground shadow under the cup base, like the old build had */
@@ -104,7 +103,7 @@
   height: auto;
   margin-inline: auto;
   mix-blend-mode: darken; /* same white-into-cream blend as the video */
-  filter: saturate(0.8);
+  filter: saturate(1.2);
 }
 
 html.motion-ok .static-frame {
