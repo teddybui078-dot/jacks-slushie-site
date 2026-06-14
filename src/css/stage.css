@@ -67,7 +67,7 @@
 
 .panel {
   position: relative;
-  min-height: 100vh;
+  min-height: 80vh; /* shorter than a full screen so the cards sit closer */
   display: flex;
   align-items: center;
   padding: 4vh clamp(1rem, 4vw, 4rem);
@@ -75,6 +75,7 @@
 
 /* hero frames the cup: brand block up top, CTA pinned low */
 .panel--hero {
+  min-height: 100vh; /* the landing keeps the full screen */
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
