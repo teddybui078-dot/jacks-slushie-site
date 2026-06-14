@@ -97,10 +97,13 @@
 }
 
 .menu-note {
-  margin-top: 0.8rem;
-  font-size: 0.78rem; /* matches the eyebrow ("What's inside") */
-  font-weight: 600;
-  color: rgba(92, 58, 40, 0.8);
+  /* same label treatment as the eyebrow so the two read identically */
+  margin-top: 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(92, 58, 40, 0.75);
 }
 
 /* ---- snacks board: its own card (not .menu-card) so every row sizes the
