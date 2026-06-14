@@ -66,7 +66,7 @@
 
 .panel {
   position: relative;
-  min-height: 80vh; /* shorter than a full screen so the cards sit closer */
+  min-height: 60vh; /* shorter still so the cards sit close together */
   display: flex;
   align-items: center;
   padding: 4vh clamp(1rem, 4vw, 4rem);
