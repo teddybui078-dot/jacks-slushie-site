@@ -45,7 +45,7 @@ export function initScenes(scrubber) {
   });
 
   // staggered reveals as each panel scrolls into view
-  ['[data-panel="hero"]', '[data-panel="problem"]', '[data-panel="mission"]', '[data-panel="menu"]', '[data-panel="find"]', '#site-footer'].forEach(
+  ['[data-panel="hero"]', '[data-panel="problem"]', '[data-panel="mission"]', '[data-panel="menu"]', '[data-panel="snacks"]', '[data-panel="find"]', '#site-footer'].forEach(
     revealIn
   );
 

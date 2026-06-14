@@ -103,6 +103,64 @@
   color: rgba(92, 58, 40, 0.8);
 }
 
+/* ---- snacks board: reuses .menu-card, swaps tint + tilt ---- */
+
+.snacks-card {
+  background: var(--bg-find);
+  rotate: 1deg;
+}
+
+.snack-group + .snack-group {
+  margin-top: 0.9rem;
+}
+
+.snack-group h3 {
+  margin-bottom: 0.25rem;
+}
+
+.price-list div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px dashed rgba(92, 58, 40, 0.25);
+}
+
+.price-list dt {
+  font-weight: 600;
+}
+
+.price-list dd {
+  font-family: var(--font-head);
+  font-weight: 700;
+  white-space: nowrap;
+  color: rgba(92, 58, 40, 0.85);
+}
+
+/* the smoothie bowl gets a featured row */
+.price-list--feature {
+  margin-top: 1rem;
+  border-top: 2px solid var(--brown);
+  padding-top: 0.6rem;
+}
+
+.price-list--feature div {
+  border-bottom: 0;
+  padding: 0;
+}
+
+.price-list--feature dt {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.price-list--feature dd {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
 /* the floating cards carry the page on desktop, so give the bigger cards
    generous padding and type so they read as full panels, not labels */
 @media (min-width: 769px) {
