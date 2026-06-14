@@ -5,9 +5,10 @@
   --cream: #f8d9a0;
   --brown: #5c3a28;
 
-  /* warm cream page background. The portrait scrub video now sits in its own
-     white "screen" frame, so this no longer has to match the video. */
-  --stage-bg: #ffe0a2;
+  /* soft warm page background. It doubles as the backdrop the scrub video
+     blends against (darken), so it's kept light — a darker/more saturated
+     value here caps the cup's colours and dulls it. */
+  --stage-bg: #fff6e6;
 
   --card-bg: #fdf2e0;
 
